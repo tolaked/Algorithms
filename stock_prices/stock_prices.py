@@ -3,18 +3,14 @@
 import argparse
 
 def find_max_profit(prices):
-    if prices[0] == max(prices):
-      prices.remove(prices[0])
-      max_price = max(prices)
-    else:
-      max_price = max(prices)
-
-    min_sell = prices.index(max_price)
-    min_prices = prices[:min_sell + 1]
-    smallest_price = min(min_prices)
-    maximum_profit = max_price - smallest_price
-    return maximum_profit
-
+    
+    current_profit = 0
+    current_profit = prices[1] - prices [0]
+    for i in range(0, (len(prices) - 1)):
+      for j in range(1, len(prices) - 1):
+        if j > i and prices[j] - prices[i] > current_profit:
+         current_profit = prices[j] - prices[i]
+    return current_profit
     
 
 if __name__ == '__main__':
